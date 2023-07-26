@@ -4,20 +4,18 @@ import UsersList from './components/User/UsersList';
 
 
 function App() {
-  const [userList, setUserList] = useState([]);
+  const [usersList, setUsersList] = useState([]);
 
-  const addUserHandler = (user) => {
-    setUserList(prevList => {
-      const updatedList = [...prevList];
-      updatedList.push({ username: user.username, age: user.age, id: Math.random().toString()});
-      return updatedList;
+  const addUserHandler = (nName, nAge) => {
+    setUsersList((prevUsersList) => {
+      return [...prevUsersList, { name: nName, age: nAge, id: Math.random().toString() }]
     });
   }
 
   return (
     <div>
       <AddUser onAddUser={addUserHandler} />
-      <UsersList users={userList} />
+      <UsersList users={usersList} />
     </div>
   );
 }
